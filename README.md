@@ -8,3 +8,8 @@ Must meet good quality coding standards
 Does NOT user alerts, confirms, or prompts
 Must be deployed to Github Pages
 Must be interactive. 
+
+User Story 
+As a busy adult
+I want to orginize my days
+So that i can keep track of my daily life schedule
