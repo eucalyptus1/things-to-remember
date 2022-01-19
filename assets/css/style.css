@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 html,body {
     min-height: 100%;
     min-width: 100%;
@@ -19,7 +23,7 @@ html,body {
     font-size: 48px;
     /*color: #A4C639;
     color: #f88379;*/
-    color: tomato;
+    color: #083D77;
     width: 100%;
     align-self: center;
 }
@@ -30,8 +34,8 @@ html,body {
     grid-column-gap: 5px;
     font-family: 'Courier New', Courier, monospace;
     font-size: 24px;
-    color: tomato;
-    /*color: #aaa8a8;*/
+    color: #083D77;
+    /*color: #38516B;*/
     width: 100%;
     align-self: center;
 }
@@ -55,19 +59,19 @@ html,body {
     border-bottom-width: 4px;
     /*border-color: #A4C639;
     border-color: #f88379;*/
-    border-color: tomato;
-    color:  #b5bcbc;
+    border-color: #083D77;
+    color:  #161925;
 }
 
 .dayHeader {
     align-self: center;
     border-bottom-style: solid;
     border-bottom-width: 4px;
-    border-color: tomato;
+    border-color: #083D77;
     /*
     border-color: #A4C639;
     border-color: #f88379;*/
-    color:  #b5bcbc;
+    color:  #161925;
 }
 .weekend {
     background-color: #f4f4f4;
@@ -76,7 +80,7 @@ html,body {
 .dayNumber {
     font-family: 'Courier New', Courier, monospace;
     font-size: 18px;
-    color: #aaa8a8;
+    color: #38516B;
     height: 20px;
     width: 20px;
     text-align: center;
@@ -84,13 +88,13 @@ html,body {
 
 .today .dayNumber{
     color: white;
-    background-color: tomato;
+    background-color: #083D77;
     border-radius: 50%;
     text-align: center;
 }
 
 div.today :hover {
-    color: #b5bcbc;
+    color: #161925;
 }
 
 .day:hover .dayNumber{
@@ -117,4 +121,52 @@ div.today :hover {
     height: 20px;
     width: 20px;
     font-size:20px;
+}
+
+.page-title {
+    color: #083D77;
+    margin-bottom: 5px;
+    margin-top: 0;
+    font-size: 4.5rem;
+  }
+
+  form {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+  }
+
+  form input {
+  outline: none;
+  border: none;
+  padding: 10px;
+  width: 70%;
+  font-size: 1.5rem;
+  border: 2px solid gray;
+  border-radius: 5px;
+}
+
+form .form-group {
+  margin: 10px 6px 10px 0;
+  flex: 1;
+}
+.select-dropdown,
+.select-status {
+  display: block;
+  font-size: 1.5rem;
+  color: black;
+  padding: 10px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  border: 2px solid black;
+  border-radius: 5px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  background-image: url("../images/select-arrow.svg");
+  background-repeat: no-repeat, repeat;
+  background-position: right 0.7em top 50%, 0 0;
+  background-size: 0.65em auto, 100%;
 }
