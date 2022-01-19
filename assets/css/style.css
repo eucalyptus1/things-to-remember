@@ -88,7 +88,7 @@ html,body {
 
 .today .dayNumber{
     color: white;
-    background-color: #083D77;
+    background-color: rgb(27, 24, 25);
     border-radius: 50%;
     text-align: center;
 }
