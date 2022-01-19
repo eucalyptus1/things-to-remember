@@ -15,6 +15,7 @@
 		<h1 class="page-title">Things To Remember Calendar!</h1>
 
 		<p>Click the button below to add a new calendar event!</p>
+
 		<form id="task-form">
 			<div class="form-group">
 				<input type="text" name="task-name" placeholder="Enter Event Name" />
@@ -28,15 +29,38 @@
 				</select>
 			</div>
 			<div class="form-group">
-				<button class="btn" id="save-task" type="submit">Add Event</button>
+				<button class="btn" id="save-event" type="submit">Add Event</button>
 			</div>
 		</form>
 
 	</header>
-	<div>
 
-	</div>
-	</div>
+	<main class="week" id="week">
+		<section class="day-container">
+			<h2 class="day-title">Monday</h2>
+			<ul class="event-list" id="monday"></ul>
+		</section>
+
+		<section class="day-container">
+			<h2 class="day-title">Tuesday</h2>
+			<ul class="event-list" id="monday"></ul>
+		</section>
+		
+		<section class="day-container">
+			<h2 class="day-title">Wednesday</h2>
+			<ul class="event-list" id="monday"></ul>
+		</section>
+		
+		<section class="day-container">
+			<h2 class="day-title">Thursday</h2>
+			<ul class="event-list" id="monday"></ul>
+		</section>
+
+		<section class="day-container">
+			<h2 class="day-title">Friday</h2>
+			<ul class="event-list" id="monday"></ul>
+		</section>
+	</main>
 
 	<div id="month">
 
