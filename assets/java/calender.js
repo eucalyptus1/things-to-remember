@@ -144,7 +144,7 @@
 // }
 
 var dayIdCounter = 0;
-var formEl = document.querySelector("#task-form");
+var formEl = document.querySelector("#event-form");
 var weekEl = document.querySelector("#week");
 var mondayEl = document.querySelector("#monday");
 var tuesdayEl = document.querySelector("#tuesday");
@@ -154,8 +154,72 @@ var fridayEl = document.querySelector("#friday");
 
 var events = [];
 
-var eventFormHandler = function (event) {
-    event.preventDefault();
+var formEl = document.querySelector("#event-form");
+var eventsToDoEl = document.querySelector("#monday");
+
+var eventFormHandler = function(event) {
+  event.preventDefault();
+  var eventNameInput = document.querySelector("input[name='event-name']").value;
+  var eventTypeInput = document.querySelector("select[name='event-type']").value;
+
+  // package up data as an object
+  var eventDataObj = {
+      name: eventNameInput,
+      type: eventTypeInput
+  };
+
+  // send it as an argument to createTaskEl
+  createEventEl(eventDataObj);
+};
+
+var createEventEl = function (eventDataObj) {
+  // create list item
+  var listItemEl = document.createElement("li");
+  listItemEl.className = "event-item";
+
+  // create div to hold task info and add to list item
+  var eventInfoEl = document.createElement("div");
+  eventInfoEl.className = "event-info";
+  eventInfoEl.innerHTML = "<h3 class='event-name'>" + eventDataObj.name + "</h3><span class='event-type'>" + eventDataObj.type + "</span>";
+  listItemEl.appendChild(eventInfoEl);
+
+  // add entire list item to list
+  eventsToDoEl.appendChild(listItemEl);
+};
+
+var createTaskActions = function (taskId) {
+	var actionContainerEl = document.createElement("div");
+	actionContainerEl.className = "task-actions";
+
+	var statusSeletEl = document.createElement("Select");
+	statusSeletEl.className = "select-status";
+	statusSeletEl.setAttribute("name", "status-change");
+	statusSeletEl.setAttribute("data-task-id", taskId);
+
+	var statusChoices = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+
+	for (var i = 0; i < statusChoices.length; i++) {
+		// Create option element
+		var statusOptionEl = document.createElement("option")
+		statusOptionEl.textContent = statusChoices[i];
+		statusOptionEl.setAttribute("value", statusChoices[i]);
+
+		// append to select
+		statusSeletEl.appendChild(statusOptionEl);
+	}
+
+	actionContainerEl.appendChild(statusSeletEl);
+
+	return actionContainerEl;
 }
 
+var saveEvents = function () {
+	localStorage.setItem("events", JSON.stringify(events));
+};
+
 formEl.addEventListener("submit", eventFormHandler);
+buttonEl.addEventListener("click", createEventHandler);
+
+weekEl.addEventListener("click", eventButtonHandler);
+
+weekEl.addEventListener("change", eventStatusChangeHandler);
