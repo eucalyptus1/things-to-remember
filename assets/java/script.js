@@ -1,144 +1,142 @@
-// for nodejs
-// var moment = require('moment');
-const dateFormat = 'YYYY-MM-dd';
-const mayDate = '2022-01-15';
-const numberOfDays = 7;
+//local storage, helps sotre data
+let nav = 0;
+let clicked = null;
+let events = localStorage.getItem('events') ? JSON.parse(localStorage.getItem('events')) : [];
 
-const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-const shortMonths = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+//adding adding and deleting event command. Added Days of the week. These are local values that don't change. Adding a calendar refrence 
+const calendar = document.getElementById('calendar');
+const newEventModal = document.getElementById('newEventModal');
+const deleteEventModal = document.getElementById('deleteEventModal');
+const backDrop = document.getElementById('modalBackDrop');
+const eventTitleInput = document.getElementById('eventTitleInput');
+const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-const shortDays = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+//clicking date function
+function openModal(date) {
+  clicked = date;
 
-// date
-var currentTime = moment(mayDate,dateFormat); // current date & time
-//currentTime = moment();
-// console.log(currentTime);
+  const eventForDay = events.find(e => e.date === clicked);
 
-// start of the month
-var startDate = currentTime.startOf('month');
-// week # at start of month
-var startWeek = startDate.week();
+  if (eventForDay) {
+    document.getElementById('eventText').innerText = eventForDay.title;
+    deleteEventModal.style.display = 'block';
+  } else {
+    newEventModal.style.display = 'block';
+  }
 
-// end of the month
-var endDate = currentTime.endOf('month');
-// week # at end of month
-var endWeek = endDate.week();
-
-//console.log(currentTime);
-
-// date: obtaining new instance of date & time
-currentTime = moment(mayDate,dateFormat);
-//currentTime = moment();
-
-// console.log(currentTime);
-
-var totalNumberOfWeeks = endWeek - startWeek; // # of rows needed to render the current Month
-
-var monthHeaderString = shortMonths[currentTime.month()] + " "+currentTime.year();
-
-//appending the month as a div to body
-var monthHeader = document.createElement('DIV');
-monthHeader.setAttribute('class','monthHeader');
-monthHeader.innerText = monthHeaderString;
-
-document.getElementById('month').appendChild(monthHeader);
-
-var weekHeader = document.createElement("DIV");
-weekHeader.setAttribute("class","weekHeader");
-document.getElementById('month').appendChild(weekHeader);
-
-//adding day headers to weekHeader div
-for(var day=0;day<numberOfDays;day++){
-    // create a DOM div element
-    var dayOfWeek = document.createElement('DIV');
-    dayOfWeek.setAttribute('class','dayHeader');
-    dayOfWeek.innerText = shortDays[day];
-    //getElementsByClassName returns an array
-    document.getElementsByClassName('weekHeader')[0].appendChild(dayOfWeek);
+  backDrop.style.display = 'block';
 }
-//appending weeks to the month div
-for (var i = startWeek; i<=endWeek;i++){
-    var weekElement = document.createElement('DIV');
-    weekElement.setAttribute('class','week');
-    weekElement.setAttribute('id','week'+i);//week1 etc
-    document.getElementById('month').appendChild(weekElement);
-}
+//using function that we did is easier rather then writing more code then required.
+function load() {
+  const dt = new Date();
 
-// console.log('currentTime before cloning',currentTime);
+  if (nav !== 0) {
+    dt.setMonth(new Date().getMonth() + nav);
+  }
+// these 3 lines are geting the actual day,year&month 
+  const day = dt.getDate();
+  const month = dt.getMonth();
+  const year = dt.getFullYear();
+//Getting the day of the month the code was created, the date string is 
+  const firstDayOfMonth = new Date(year, month, 1);
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  //US calendar 
+  const dateString = firstDayOfMonth.toLocaleDateString('en-us', {
+      //passing information that we want, numrc is giving us the actual number of the date, rather then telling us in letters
+    weekday: 'long',
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+  });
+  //varuable 
+  const paddingDays = weekdays.indexOf(dateString.split(', ')[0]);
 
-//date
-var startOfMonthLoop = moment(mayDate,dateFormat).startOf('month');
-//currentTime = moment();
-// console.log('start of month:', startOfMonthLoop);
+  document.getElementById('monthDisplay').innerText = 
+    `${dt.toLocaleDateString('en-us', { month: 'long' })} ${year}`;
+// continuing to get us the next month
+  calendar.innerHTML = '';
 
-var endOfMonthFlag = true;
-//populating each week with a day div. Final grid should be number of weeks x 7 days
-for(var i = startWeek; i<=endWeek;i++){
-    for(var day =0;day<numberOfDays;day++){ // day will cycle from 0 to 6
-        var dayElement = document.createElement('DIV');
-        dayElement.setAttribute('class','day');
+  for(let i = 1; i <= paddingDays + daysInMonth; i++) {
+    const daySquare = document.createElement('div');
+    daySquare.classList.add('day');
 
-        if(day==0 || day==6){
-            dayElement.setAttribute('class','day weekend');
-        }
-        
-        if(i == startOfMonthLoop.week() && day==startOfMonthLoop.day() && endOfMonthFlag){
-            
-            if(startOfMonthLoop.date()==endDate.date()){
-                endOfMonthFlag=false;
-                }
-            console.log('start of month ',startOfMonthLoop.date(),'end date' ,endDate.date(),'current time: ',currentTime.date());
-            if( (startOfMonthLoop.date() == currentTime.date() ) && (day==0 || day==6) ){
-                dayElement.setAttribute('class','day weekend today');
-            } else if (startOfMonthLoop.date() == currentTime.date()) {
-                dayElement.classList.add('today');
-                dayElement.classList.add('day');
-            }
-            // div class=dayNumber (number header)
-            var dayNumberElement = document.createElement('DIV');
-            dayNumberElement.setAttribute('class','dayNumber');
+    const dayString = `${month + 1}/${i - paddingDays}/${year}`;
+// giving the actual number of the day we are on
+    if (i > paddingDays) {
+      daySquare.innerText = i - paddingDays;
+      const eventForDay = events.find(e => e.date === dayString);
 
-            dayNumberElement.innerText = startOfMonthLoop.date();
-            dayElement.appendChild(dayNumberElement);
+      if (i - paddingDays === day && nav === 0) {
+        daySquare.id = 'currentDay';
+      }
 
-                //dayBody div class=dayBody
-            var dayBodyElement = document.createElement('DIV');
-            dayBodyElement.classList.add('dayBody');
-
-            var dayFooterElement = document.createElement('DIV');
-            dayFooterElement.classList.add('dayFooter');
-            var plusIcon = document.createElement('SPAN');
-            plusIcon.classList.add('fas');
-            plusIcon.classList.add('fa-calendar-plus');
-            plusIcon.classList.add('icon');
-            plusIcon.setAttribute('onclick','createEvent(this)')
-            dayFooterElement.appendChild(plusIcon);
-
-            dayElement.appendChild(dayBodyElement);
-            dayElement.appendChild(dayFooterElement);
-
-            startOfMonthLoop.add(1,'days');//increment by 1 day
-        } 
-
-        document.getElementById('week'+i).appendChild(dayElement);
-        
-
+      if (eventForDay) {
+        const eventDiv = document.createElement('div');
+        eventDiv.classList.add('event');
+        eventDiv.innerText = eventForDay.title;
+        daySquare.appendChild(eventDiv);
+      }
+      //adding event listener for everytime the user clicks on the a sqaure 
+      daySquare.addEventListener('click', () => openModal(dayString));
+    } else {
+      daySquare.classList.add('padding');
     }
+
+    calendar.appendChild(daySquare);    
+  }
 }
 
-//appending days to each week div
-var firstNumericalDay = startDate.date(); // for mar: 1
-var firstDay = startDate.day(); 
-var lastNumericalDay = endDate.date(); // for mar: 31
-var lastDay = endDate.day(); 
-
-for(var i = firstNumericalDay; i<=lastNumericalDay;i++){
-    
-    //a check should be made to see what week we're in and 
+function closeModal() {
+  eventTitleInput.classList.remove('error');
+  newEventModal.style.display = 'none';
+  deleteEventModal.style.display = 'none';
+  backDrop.style.display = 'none';
+  eventTitleInput.value = '';
+  clicked = null;
+  load();
 }
 
+function saveEvent() {
+  if (eventTitleInput.value) {
+    eventTitleInput.classList.remove('error');
 
-function createEvent(element) {
+    events.push({
+      date: clicked,
+      title: eventTitleInput.value,
+    });
 
+    localStorage.setItem('events', JSON.stringify(events));
+    closeModal();
+  } else {
+    eventTitleInput.classList.add('error');
+  }
 }
+
+function deleteEvent() {
+  events = events.filter(e => e.date !== clicked);
+  localStorage.setItem('events', JSON.stringify(events));
+  closeModal();
+}
+// event listener changing months, 
+function initButtons() {
+  document.getElementById('nextButton').addEventListener('click', () => {
+    nav++;
+    load();
+  });
+
+  document.getElementById('backButton').addEventListener('click', () => {
+    nav--;
+    load();
+  });
+// event listener for task edits
+  document.getElementById('saveButton').addEventListener('click', saveEvent);
+  document.getElementById('cancelButton').addEventListener('click', closeModal);
+  document.getElementById('deleteButton').addEventListener('click', deleteEvent);
+  document.getElementById('closeButton').addEventListener('click', closeModal);
+}
+
+initButtons();
+load();
+
+console.dir(window.document);
+
