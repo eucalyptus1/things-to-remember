@@ -5,20 +5,6 @@ body {
   background-color: #FFFCFF;
 }
 
-<<<<<<< HEAD
-button {
-  width: 75px;
-  cursor: pointer;
-  box-shadow: 0px 0px 2px gray;
-  border: none;
-  outline: none;
-  padding: 5px;
-  border-radius: 5px;
-  color: white;
-}
-
-=======
->>>>>>> c5d5d636fcfde1a8d11a14d8936dbde2e546ac91
 #header {
   padding: 10px;
   color: black;
@@ -122,23 +108,8 @@ button {
   border: 2px solid red;
 }
 
-<<<<<<< HEAD
-#cancelButton, #deleteButton {
-  background-color: rgb(255, 59, 59);
-  font-size: large;
-}
-
-#saveButton, #closeButton {
-  background-color: rgb(0, 172, 0);
-  font-size: large;
-}
-
-#eventText {
-  font-size: 14px;
-=======
 #eventText {
   font-size: 10px;
->>>>>>> c5d5d636fcfde1a8d11a14d8936dbde2e546ac91
 }
 
 #modalBackDrop {
