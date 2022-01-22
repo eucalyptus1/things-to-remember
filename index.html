@@ -1,60 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
-    <title>Things To Remember</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
 
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Things To Remember</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+</head>
+
+<body>
+
+  <div id="container">
+
+    <h1 class=" is-size-1 has-text-centered pb-5 pt-4 has-text-weight-bold is-italic is-underlined has-text-link">Things To Remember</h1>
     
-      <h1>Things To Remember</h1>
-    
-    <div id="container">
-      <div id="header">
-        <div id="monthDisplay"></div>
-        <div>
-          <button id="backButton">Back</button>
-          <button id="nextButton">Next</button>
-        </div>
+    <div id="header">
+      <div class="has-text-info is-size-3 has-text-weight-semibold" id="monthDisplay"></div>
+      <div>
+        <button class="is-size-5" id="backButton">Back</button>
+        <button class="is-size-5" id="nextButton">Next</button>
       </div>
-
-      <div id="weekdays">
-        <div>Sunday</div>
-        <div>Monday</div>
-        <div>Tuesday</div>
-        <div>Wednesday</div>
-        <div>Thursday</div>
-        <div>Friday</div>
-        <div>Saturday</div>
-      </div>
-
-      <div id="calendar"></div>
     </div>
 
-    <div id="newEventModal">
-      <h2>New Event</h2>
-
-      <input id="eventTitleInput" placeholder="Event Title" />
-
-      <button id="saveButton">Save</button>
-      <button id="cancelButton">Cancel</button>
+    <div class="is-size-5" id="weekdays">
+      <div class="px-3">Sunday</div>
+      <div class="px-3">Monday</div>
+      <div class="px-3">Tuesday</div>
+      <div class="px-3">Wednesday</div>
+      <div class="px-3">Thursday</div>
+      <div class="px-3">Friday</div>
+      <div class="pr-6 mr-6">Saturday</div>
     </div>
 
-    <div id="deleteEventModal">
-      <h2>Event</h2>
+    <div id="calendar"></div>
+  </div>
 
-      <p id="eventText"></p>
+  <div id="newEventModal">
+    <h2 class="py-3 is-size-4 has-text-weight-semibold is-italic">New Event</h2>
 
-      <button id="deleteButton">Delete</button>
-      <button id="closeButton">Close</button>
-    </div>
+    <input id="eventTitleInput" placeholder="Event Title" />
 
-    <div id="modalBackDrop"></div>
+    <button id="saveButton">Save</button>
+    <button id="cancelButton">Cancel</button>
+  </div>
 
-    <script src=".\assets\java\script.js"></script>
+  <div id="deleteEventModal">
+    <h2>Event</h2>
 
-  </body>
+    <p id="eventText"></p>
+
+    <button id="deleteButton">Delete</button>
+    <button  id="closeButton">Close</button>
+  </div>
+
+  <div id="modalBackDrop"></div>
+
+  <script src=".\assets\java\script.js"></script>
+
+</body>
+
 </html>
