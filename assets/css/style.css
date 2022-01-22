@@ -5,6 +5,7 @@ body {
   background-color: #FFFCFF;
 }
 
+<<<<<<< HEAD
 button {
   width: 75px;
   cursor: pointer;
@@ -16,6 +17,8 @@ button {
   color: white;
 }
 
+=======
+>>>>>>> c5d5d636fcfde1a8d11a14d8936dbde2e546ac91
 #header {
   padding: 10px;
   color: black;
@@ -119,6 +122,7 @@ button {
   border: 2px solid red;
 }
 
+<<<<<<< HEAD
 #cancelButton, #deleteButton {
   background-color: rgb(255, 59, 59);
   font-size: large;
@@ -131,6 +135,10 @@ button {
 
 #eventText {
   font-size: 14px;
+=======
+#eventText {
+  font-size: 10px;
+>>>>>>> c5d5d636fcfde1a8d11a14d8936dbde2e546ac91
 }
 
 #modalBackDrop {
