@@ -1,9 +1,6 @@
 body {
   display: flex;
-  margin: 50px;
   justify-content: center;
-  background-color: #FFFCFF;
-
 }
 
 #header {
@@ -76,7 +73,6 @@ body {
 
 .padding {
   cursor: default !important;
-  background-color: #FFFCFF !important;
   box-shadow: none !important;
 }
 

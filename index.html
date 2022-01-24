@@ -21,8 +21,8 @@
     <div id="header">
       <div class="has-text-info is-size-3 has-text-weight-semibold" id="monthDisplay"></div>
       <div>
-        <button class="is-size-5" id="backButton">Back</button>
-        <button class="is-size-5" id="nextButton">Next</button>
+        <p class="button is-link is-light is-rounded" id="backButton">Back</p>
+        <p class="button is-link is-light is-rounded" id="nextButton">Next</p>
       </div>
     </div>
 
@@ -44,29 +44,29 @@
 
     <input id="eventTitleInput" placeholder="Event Title" />
 
-    <button id="saveButton">Save</button>
-    <button id="cancelButton">Cancel</button>
+    <p class="button is-success is-rounded" id="saveButton">Save</p>
+    <p class="button is-danger is-rounded" id="cancelButton">Cancel</p>
   </div>
 
   <div id="deleteEventModal">
-    <h2>Event</h2>
+    <h2 class="has-text-weight-semibold is-size-5">Event</h2>
 
-    <p id="eventText"></p>
+    <p class="is-size-5 my-3 ml-1" id="eventText"></p>
 
-    <button id="deleteButton">Delete</button>
-    <button  id="closeButton">Close</button>
+    <p class="button is-success is-rounded" id="deleteButton">Delete</p>
+    <p class="button is-danger is-rounded" id="closeButton">Close</p>
   </div>
 
   <div id="modalBackDrop"></div>
 
 <!--weather api goes here-->
-  <section class="weather-app">
+  <section class="weather-app is-centered">
     <div class="title">
         <p>Current Weather</p>
     </div>
     
     <div>
-        <div class="icon">
+        <div class="image is-96x96">
             <img src="">
         </div>
         <div class="temp">

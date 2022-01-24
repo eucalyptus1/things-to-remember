@@ -14,7 +14,7 @@ const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Frida
 
 //weather API
 
-var iconElement = document.querySelector(".icon");
+var iconElement = document.querySelector(".image");
 var tempElement = document.querySelector(".temp p");
 var descElement = document.querySelector(".desc p");
 var locationElement = document.querySelector(".city p");
@@ -205,6 +205,3 @@ function initButtons() {
 
 initButtons();
 load();
-
-console.dir(window.document);
-
