@@ -50,7 +50,7 @@ function setPosition(position){
 
 //call for openweather api
 function getWeather(lat, lon){
-    let api = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`;
+    let api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`;
     
     fetch(api)
         .then(function(response){
@@ -71,7 +71,7 @@ function getWeather(lat, lon){
 
 // display function
 function displayWeather(){
-    iconElement.innerHTML = `<img src="http://openweathermap.org/img/wn/${weather.iconId}@4x.png"/>`;
+    iconElement.innerHTML = `<img src="https://openweathermap.org/img/wn/${weather.iconId}@4x.png"/>`;
     tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
     descElement.innerHTML = weather.description;
     locationElement.innerHTML = `${weather.city}`;
