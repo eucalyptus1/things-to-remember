@@ -27,3 +27,4 @@ Emanuel, Saba, Omar, James and Nathaniel
 ## Website
 https://eucalyptus1.github.io/things-to-remember/
 
+![screenshot](./assets/screenshot.png)
