@@ -37,7 +37,7 @@ function celsiusToFahrenheit(temperature){
 
 
 
-//geolocation for getting users location
+//geomapping for getting users locations
 navigator.geolocation.getCurrentPosition(setPosition);
 
 
