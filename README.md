@@ -2,7 +2,7 @@
 
 ## User Story 
 As a busy adult
-I want to orginize my days
+I want to organize my days
 So that i can keep track of my daily life schedule
 
 ## Purpose
